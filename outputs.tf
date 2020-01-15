@@ -20,7 +20,7 @@ output "website_bucket_name" {
   value       = module.website_s3_bucket.name
 }
 
-output "website_bucket_domain" {
+output "website_endpoint" {
   description = "Domain name of the bucket"
-  value       = module.website_s3_bucket.domain
+  value       = module.website_s3_bucket.website_endpoint
 }

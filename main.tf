@@ -2,6 +2,19 @@
 
 provider "aws" {
   region = "us-west-2"
+
+  access_key                  = "anaccesskey"
+  secret_key                  = "asecretkey"
+  s3_force_path_style         = true
+  skip_credentials_validation = true
+  skip_metadata_api_check     = true
+  skip_requesting_account_id  = true
+
+  endpoints {
+    apigateway = "http://localhost:4566"
+    ec2        = "http://localhost:4566"
+    s3         = "http://localhost:4566"
+  }
 }
 
 module "vpc" {
@@ -41,7 +54,7 @@ module "ec2_instances" {
 module "website_s3_bucket" {
   source = "./modules/aws-s3-static-website-bucket"
 
-  bucket_name = "<UNIQUE BUCKET NAME>"
+  bucket_name = "test-123"
 
   tags = {
     Terraform   = "true"

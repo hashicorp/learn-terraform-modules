@@ -1,3 +1,6 @@
+# Local .localstack directories
+**/.localstack/*
+
 # Local .terraform directories
 **/.terraform/*
 

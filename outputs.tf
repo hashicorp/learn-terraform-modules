@@ -27,6 +27,6 @@ output "website_bucket_domain" {
 
 output "localstack_bucket_index_file" {
   description = "Location of index file in localstack bucket"
-  value       = "${module.website_s3_bucket.name}.localhost:4566/${module.website_s3_bucket.name}/index.html"
+  value       = "http://localhost:4566/${module.website_s3_bucket.name}/index.html"
 }
 

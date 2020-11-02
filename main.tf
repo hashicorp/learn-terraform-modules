@@ -2,7 +2,8 @@
 
 provider "aws" {
   region = "us-west-2"
-
+  
+  ## v Everything between the comments is localstack specific v
   access_key                  = "anaccesskey"
   secret_key                  = "asecretkey"
   s3_force_path_style         = true
@@ -15,7 +16,7 @@ provider "aws" {
     ec2        = "http://localhost:4566"
     s3         = "http://localhost:4566"
   }
-
+  ## ^ Everything between the comments is localstack specific ^
 }
 
 module "vpc" {

@@ -2,11 +2,11 @@
 
 provider "aws" {
   region = "us-west-2"
-  
+
   ## v Everything between the comments is localstack specific v
   access_key                  = "anaccesskey"
   secret_key                  = "asecretkey"
-  s3_force_path_style         = true
+  s3_use_path_style           = true
   skip_credentials_validation = true
   skip_metadata_api_check     = true
   skip_requesting_account_id  = true
@@ -19,7 +19,7 @@ provider "aws" {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "2.21.0"
+  version = "3.14.0"
 
   name = var.vpc_name
   cidr = var.vpc_cidr
@@ -35,10 +35,10 @@ module "vpc" {
 
 module "ec2_instances" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "2.12.0"
+  version = "3.5.0"
+  count   = 2
 
-  name           = "my-ec2-cluster"
-  instance_count = 2
+  name = "my-ec2-cluster"
 
   ami                    = "ami-0c5204531f799e0c6"
   instance_type          = "t2.micro"

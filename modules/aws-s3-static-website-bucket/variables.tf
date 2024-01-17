@@ -3,13 +3,13 @@
 
 # Input variable definitions
 
-variable "bucket_name" {
-  description = "Name of the s3 bucket. Must be unique."
-  type = string
+variable "bucket_prefix" {
+  description = "Prefix for the S3 bucket. Must be lower case and fewer than 38 characters in length."
+  type        = string
 }
 
 variable "tags" {
   description = "Tags to set on the bucket."
-  type = map(string)
-  default = {}
+  type        = map(string)
+  default     = {}
 }

@@ -19,7 +19,7 @@ provider "aws" {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "3.14.0"
+  version = "5.5.1"
 
   name = var.vpc_name
   cidr = var.vpc_cidr
@@ -35,15 +35,17 @@ module "vpc" {
 
 module "ec2_instances" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "3.5.0"
+  version = "5.6.0"
   count   = 2
 
-  name = "my-ec2-cluster"
+  name = "my-ec2-instance-${count.index}"
 
   ami                    = "ami-0c5204531f799e0c6"
   instance_type          = "t2.micro"
   vpc_security_group_ids = [module.vpc.default_security_group_id]
   subnet_id              = module.vpc.public_subnets[0]
+
+  associate_public_ip_address = true
 
   tags = {
     Terraform   = "true"
